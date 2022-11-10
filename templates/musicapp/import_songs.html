@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load socialaccount %}
+{% block title %} Import {% endblock title %}
+{% load static %}
+
+{% block body %}
+    <div class="container-fluid">
+            <div class="container-fluid">
+                <div class="card-header">
+                    <i class="fas fa-table"></i>
+                    Import Song to Music Box
+                </div>
+                <div class="col-sm-8">
+                    <form class="form-horizontal" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                                <div class="col-md-6">
+                                    <label for="inputFirst">Song Name</label>
+                                    <div class="form-label-group">
+                                        <input type="text" class="form-control" name="songName" placeholder="Song Name" id="inputFirst" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-label-group">
+                                        <label for="inputLast">Album Name</label>
+                                        <input type="text" class="form-control" name="albumName" placeholder="Album" id="inputLast" required>
+                                    </div>
+                                </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="inputLast">Song Image</label>
+                                    <input type="file" class="form-control" name="imageName" id="inputLast" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-label-group">
+                                    <label for="inputLast">Song File</label>
+                                    <input type="file" class="form-control" name="fileName" id="inputLast" required>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-info btn-block" type="submit">Import</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
