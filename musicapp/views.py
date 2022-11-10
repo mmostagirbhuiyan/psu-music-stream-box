@@ -131,7 +131,7 @@ def all_songs(request):
     return render(request, 'musicapp/all_songs.html', context=context)
 
 
-@login_required
+@login_required(login_url='login')
 def import_song(request):
     if request.method == 'POST':
         song = Song(
