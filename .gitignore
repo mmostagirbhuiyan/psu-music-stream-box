@@ -334,3 +334,8 @@ reddit/media/
 !.envs/.local/
 
 .idea
+
+### Google Secret
+
+google
+google/*
