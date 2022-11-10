@@ -1,12 +1,10 @@
-import os
-
-from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.shortcuts import render, redirect
 from rest_framework.exceptions import ValidationError
 
 from .models import *
-from django.db.models import Q
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -20,7 +18,6 @@ def index(request):
         for id in recent_id:
             recent_songs.append(recent_songs_unsorted.get(id=id))
     else:
-        recent = None
         recent_songs = None
 
     first_time = False
