@@ -29,11 +29,11 @@ def index(request):
             last_played_song = Song.objects.get(id=last_played_id)
         else:
             first_time = True
-            last_played_song = Song.objects.get(id=11)
+            last_played_song = Song.objects.get(id=17)
 
     else:
         first_time = True
-        last_played_song = Song.objects.get(id=11)
+        last_played_song = Song.objects.get(id=17)
 
     # Display all songs
     songs = Song.objects.all()
@@ -107,7 +107,7 @@ def all_songs(request):
             last_played_song = Song.objects.get(id=last_played_id)
     else:
         first_time = True
-        last_played_song = Song.objects.get(id=11)
+        last_played_song = Song.objects.get(id=17)
 
     if len(request.GET) > 0:
         search_query = request.GET.get('q')
@@ -155,7 +155,7 @@ def recent(request):
         last_played_id = last_played_list[0]['song_id']
         last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=11)
+        last_played_song = Song.objects.get(id=17)
 
     # Display recent songs
     recent = list(Recent.objects.filter(user=request.user).values('song_id').order_by('-id'))
@@ -195,7 +195,7 @@ def detail(request, song_id):
         last_played_id = last_played_list[0]['song_id']
         last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=11)
+        last_played_song = Song.objects.get(id=17)
 
     playlists = Playlist.objects.filter(user=request.user).values('playlist_name').distinct
     is_favourite = Favourite.objects.filter(user=request.user).filter(song=song_id).values('is_fav')
@@ -260,7 +260,7 @@ def playlist_songs(request, playlist_name):
             last_played_id = last_played_list[0]['song_id']
             last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=11)
+        last_played_song = Song.objects.get(id=17)
 
     context = {'playlist_name': playlist_name, 'songs': songs, 'last_played': last_played_song}
 
@@ -277,7 +277,7 @@ def favourite(request):
             last_played_id = last_played_list[0]['song_id']
             last_played_song = Song.objects.get(id=last_played_id)
     else:
-        last_played_song = Song.objects.get(id=11)
+        last_played_song = Song.objects.get(id=17)
 
     if request.method == "POST":
         song_id = list(request.POST.keys())[1]
